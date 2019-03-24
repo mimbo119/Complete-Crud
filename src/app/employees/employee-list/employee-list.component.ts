@@ -52,7 +52,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onCreate(){
-    this.service.initializeForm();
+    this.deptService.initializeFormDept();
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true ;
     dialogConfig.autoFocus = true;

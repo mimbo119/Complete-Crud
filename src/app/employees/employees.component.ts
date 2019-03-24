@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material';
 
 
 @Component({
@@ -7,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
+  
+
+  @ViewChild('sidenav') sidenav: MatSidenav;
 
   constructor() { }
 
   ngOnInit() {
+  }
+  
+  snavToggle(snav){
+    snav.toggle();
   }
 
 }

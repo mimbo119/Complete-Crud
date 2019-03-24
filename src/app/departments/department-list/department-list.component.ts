@@ -1,15 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DepartmentService } from 'src/app/shared/department.service';
 import { NotificationService } from 'src/app/shared/notification.service';
-import { MatTableDataSource, MatSort,  MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
+import { MatTableDataSource, MatSort,  MatDialog, MatDialogConfig } from '@angular/material';
+import { DepartmentsComponent } from 'src/app/employees/departments/departments.component';
+import { EmployeeListComponent } from 'src/app/employees/employee-list/employee-list.component';
 
 @Component({
-  selector: 'app-departments',
-  templateUrl: './departments.component.html',
-  styleUrls: ['./departments.component.css']
+  selector: 'app-department-list',
+  templateUrl: './department-list.component.html',
+  styleUrls: ['./department-list.component.css']
 })
-export class DepartmentsComponent implements OnInit {
-
+export class DepartmentListComponent implements OnInit {
+  private dialog : MatDialog;
   listData : MatTableDataSource<any>;
   displayedColumns : string[] = ['deptName', 'code', 'actions' ];
   @ViewChild(MatSort) sort2 : MatSort;
@@ -17,7 +19,8 @@ export class DepartmentsComponent implements OnInit {
   constructor(
     private service : DepartmentService,
     private notificationService : NotificationService,
-    private dialogRef : MatDialogRef<DepartmentsComponent>
+    private employeeList : EmployeeListComponent
+    // private dialogRef : MatDialogRef<DepartmentsComponent>
 
   ) { }
 
@@ -49,7 +52,7 @@ export class DepartmentsComponent implements OnInit {
   onCloseDept(){
     this.service.formDept.reset();
     this.service.initializeFormDept();
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
 
   onClear(){
@@ -63,6 +66,20 @@ export class DepartmentsComponent implements OnInit {
     this.service.deleteDept($key);
     this.notificationService.clear(' Deleted Successfully! ');
     }
+  }
+  onCreateDept(){
+    this.service.initializeFormDept();
+    const dialogConfig2 = new MatDialogConfig();
+    // dialogConfig.disableClose = true ;
+    dialogConfig2.autoFocus = true;
+    dialogConfig2.width = "60%";
+    dialogConfig2.height = "60%";
+    // dialogConfig2.minWidth = "30%";
+    // dialogConfig2.maxHeight = "70%";
+    this.dialog.open(DepartmentsComponent, dialogConfig2);
+  }
+  onCreateDept2(){
+    this.employeeList.onCreateDept();
   }
 
 

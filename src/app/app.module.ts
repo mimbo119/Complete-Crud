@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MaterialModule} from './material/material.module';
+import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AngularFireModule } from "angularfire2";
@@ -16,6 +16,9 @@ import { environment } from "../environments/environment";
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { DatePipe } from '@angular/common';
 import { DepartmentsComponent } from './employees/departments/departments.component';
+import { DepartmentsModule } from './departments/departments.module';
+import { DepartmentListComponent } from './departments/department-list/department-list.component';
+
  
 @NgModule({
   declarations: [
@@ -24,6 +27,8 @@ import { DepartmentsComponent } from './employees/departments/departments.compon
     EmployeeComponent,
     EmployeeListComponent,
     DepartmentsComponent,
+    DepartmentListComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,7 @@ import { DepartmentsComponent } from './employees/departments/departments.compon
     AngularFireDatabaseModule,
     FormsModule
   ],
-  providers: [EmployeeService, DepartmentService, DatePipe],
+  providers: [EmployeeService, DepartmentService, EmployeeListComponent, DatePipe],
   bootstrap: [AppComponent],
   entryComponents : [EmployeeComponent, DepartmentsComponent]
 })

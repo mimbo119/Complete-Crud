@@ -1,5 +1,29 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!-- <h2>Hello</h2> -->
-<app-employees></app-employees>
+<div class="container-main">
 
-<router-outlet></router-outlet>
+    <mat-sidenav-container class="example-sidenav-container">
+        <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+            <mat-nav-list>
+                <mat-list-item>
+                    <h4 routerLink="/employees">Employees</h4>
+                </mat-list-item>
+                <mat-list-item>
+                    <h4 routerLink="/departments">Departments</h4>
+                </mat-list-item>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <mat-toolbar color="primary">
+                <button mat-button type="button" mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span class="fill-remaining-space"></span>
+                <span>Employee List</span>
+                <span class="fill-remaining-space"></span>
+            </mat-toolbar>
+            <!-- <app-employee-list></app-employee-list>      -->
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+</div>
+<!-- <router-outlet></router-outlet> -->

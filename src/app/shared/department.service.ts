@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import * as _ from 'lodash';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,11 +17,12 @@ export class DepartmentService {
           return {
             $key : item.key,
             ...item.payload.val()
-          };
+          };          
         });
       }
     );
    }
+
 
    formDept : FormGroup = new FormGroup({
     $key: new FormControl(null),
@@ -52,16 +52,20 @@ export class DepartmentService {
   }
 
    getDept($key){
-     if($key == "0"){
+     if($key == "0" || $key == "" || !$key ){
        return "";
      }
      else{
        return _.find(this.array, (obj)=>{
-         return obj.$key == $key;} ) ['name'];
+
+         return obj.$key == $key;
+        } 
+        ) ['name'];
      }
    }
 
    deleteDept($key : string){
     this.departmentList.remove($key);
+
   }
 }

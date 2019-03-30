@@ -19,6 +19,7 @@ export class EmployeeListComponent implements OnInit {
     private notification : NotificationService  ) { }
 
   listData : MatTableDataSource<any>;
+  test = [];
   displayedColumns : string[] = ['fullName', 'email', 'mobile' , 'city' , 'departmentName', 'actions', ];
   @ViewChild(MatSort) sort2 : MatSort;
   @ViewChild(MatPaginator) pages : MatPaginator;
@@ -32,10 +33,11 @@ export class EmployeeListComponent implements OnInit {
           return {
             $key : item.key,
             departmentName,
-            ...item.payload.val()
+            ...item.payload.val()           
           };
         });
         this.listData = new MatTableDataSource(array);
+        this.test = this.listData.filteredData;
         this.listData.sort = this.sort2;
         this.listData.paginator = this.pages;
       }

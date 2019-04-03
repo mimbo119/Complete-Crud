@@ -56,12 +56,35 @@ export class DepartmentService {
        return "";
      }
      else{
-       return _.find(this.array, (obj)=>{
+        var flag;
 
-         return obj.$key == $key;
-        } 
-        ) ['name'];
+      // _.find(this.array, (obj)=>{
+      //     if(obj.$key == $key ){
+      //       flag = true;
+      //     }
+      //     else{
+      //       flag = false;
+      //     }
+          
+      // });
+
+
+      for (var i=0; i < this.array.length; i++) {
+        if (this.array[i].$key === $key) {
+          flag = true;
+            
+        }
+    }
+
+      if( flag == true){
+        return _.find(this.array, (obj)=>{return obj.$key == $key;}) ['name'];
+      }
+      else{
+        return "";
+      }
+      
      }
+  
    }
 
    deleteDept($key : string){

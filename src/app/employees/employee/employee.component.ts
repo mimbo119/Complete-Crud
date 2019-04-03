@@ -46,6 +46,7 @@ export class EmployeeComponent implements OnInit {
         map(name => name ? this._filter(name) : this.department.slice())
       );
   }
+  
   displayFn(user?: User): string | undefined {
     return user ? user.name : undefined;
   }

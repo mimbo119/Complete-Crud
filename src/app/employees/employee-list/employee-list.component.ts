@@ -36,12 +36,13 @@ export class EmployeeListComponent implements OnInit {
             ...item.payload.val()           
           };
         });
+        
         this.listData = new MatTableDataSource(array);
         this.test = this.listData.filteredData;
         this.listData.sort = this.sort2;
         this.listData.paginator = this.pages;
       }
-    );
+    );    
   }
 
   onSearchClear(){
@@ -94,5 +95,5 @@ export class EmployeeListComponent implements OnInit {
     this.notification.clear(' Deleted Successfully! ');
     }
   }
-
+  
 }

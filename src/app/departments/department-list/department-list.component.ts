@@ -67,6 +67,8 @@ export class DepartmentListComponent implements OnInit {
     this.notificationService.clear(' Deleted Successfully! ');
     }
   }
+
+  
   onCreateDept(){
     this.service.initializeFormDept();
     const dialogConfig2 = new MatDialogConfig();

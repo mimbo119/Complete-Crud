@@ -5,7 +5,7 @@ import { DepartmentService } from '../../shared/department.service';
 import { NotificationService } from '../../shared/notification.service';
 import { MatDialogRef } from '@angular/material';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map, startWith, find} from 'rxjs/operators';
 
 export interface User {
   name: string;
@@ -50,6 +50,7 @@ export class EmployeeComponent implements OnInit {
   displayFn(user?: User): string | undefined {
     return user ? user.name : undefined;
   }
+ 
 
   private _filter(name: string): User[] {
     const filterValue = name.toLowerCase();
